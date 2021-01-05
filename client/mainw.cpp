@@ -81,11 +81,6 @@ void MainW::ReadData()
     buf = serial->readAll();
     if(!buf.isEmpty())
     {
-        //QString str = ui->textEdit->toPlainText();
-        //str+=tr(buf);
-        //ui->textEdit->clear();
-        //for(int i=0;i<4;i++) tmp[i]=buf.at(3-i);
-        //int pres;
         messagepht dat;
         memcpy(&dat,buf.data(),sizeof(messagepht));
         pht data={dat.pressure/25600.0,
@@ -96,8 +91,6 @@ void MainW::ReadData()
         ui->lineEditpres->setText(QString::number(data.pressure)+"hPa");
         ui->lineEdithumi->setText(QString::number(data.humidity)+"%");
         ui->lineEditTemp->setText(QString::number(data.temperature)+"°C");
-        //ui->textEdit->append(QString::number(dat.pressure>>8)+'\t'+QString::number(dat.humidity)+'\t'+QString::number(dat.temperature));
-        //ui->textEdit->append(QString::number(sizeof(pht)));
         drawchart();
     }
     buf.clear();
@@ -114,12 +107,6 @@ void MainW::drawchart()
     pseries->clear();
     hseries->clear();
     tseries->clear();
-    /*series->append(0, 6);
-    series->append(2, 4);
-    series->append(3, 8);
-    series->append(7, 4);
-    series->append(10, 5);
-    *series << QPointF(11, 1) << QPointF(13, 3) << QPointF(17, 6) << QPointF(18, 3) << QPointF(20, 2);*/
     for(int i=0;i<chartbuflen;i++){
         pseries->append(i,dataqueue[i].pressure/10);
         hseries->append(i,dataqueue[i].humidity);
@@ -161,12 +148,6 @@ void MainW::drawchart()
 
 
 //![5]
-    //QMainWindow window;
-   // window.setCentralWidget(chartView);
-    //window.resize(400, 300);
-    //window.show();
 //![5]
-    //ui->widget-
     ui->widget->setLayout(layout);
-    //ui->widget->
 }
