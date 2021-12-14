@@ -7,6 +7,6 @@
  	- 温湿度（aht10）
  	- 气压（bmp280）
 ### client ###
-<img src="./document/client.PNG" height="330" >
+<img src="./client.PNG" height="330" >
 ### device ###
-<img src="./document/device.PNG" height="330" >
+<img src="./device.PNG" height="330" >
